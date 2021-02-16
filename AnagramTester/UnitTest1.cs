@@ -17,7 +17,7 @@ namespace AnagramTester
         {
             af = new AnagramFinder();
 
-            var actual = Assert.ThrowsException<Exception>(() =>
+            var actual = Assert.ThrowsException<ArgumentException>(() =>
                 af.FindAllAnagramsWithDuplicateLetters(null));
 
             Assert.AreEqual(actual.Message, "Param 'wordList' is null or empty");
@@ -41,7 +41,7 @@ namespace AnagramTester
 
             List<String> nullValL = new List<String> { "dale", "vale", "veal", null, "lead" };
 
-            var actual = Assert.ThrowsException<Exception>(() =>
+            var actual = Assert.ThrowsException<ArgumentException>(() =>
                  af.FindAllAnagramsWithDuplicateLetters(nullValL));
             Assert.AreEqual("Param 'wordList' contains null or empty val", actual.Message);
         }
@@ -53,7 +53,7 @@ namespace AnagramTester
             af = new AnagramFinder();
             List<String> emptyValL = new List<String> { "dale", "vale", "veal", "", "lead" };
 
-            var actual = Assert.ThrowsException<Exception>(() =>
+            var actual = Assert.ThrowsException<ArgumentException>(() =>
                   af.FindAllAnagramsWithDuplicateLetters(emptyValL));
 
             Assert.AreEqual("Param 'wordList' contains null or empty val", actual.Message);
