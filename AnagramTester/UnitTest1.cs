@@ -132,11 +132,13 @@ namespace AnagramTester
         public void TestCaseInsensitive()
         {
             af = new AnagramFinder();
-            List<String> l = new List<String>{ "SILENT", "listen", "taLent", "LatenT" };
-            List<List<String>> actual = af.FindAllAnagramsWithDuplicateLetters(l);
-            String expected = "[[LatenT, taLent], [listen, SILENT]]";
-            Assert.AreEqual(expected, actual.ToString());
+            List<String> l = new List<String>{ "SILENT", "listen", "taLent", "LatenT"};
+            List<List<String>> actualL = af.FindAllAnagramsWithDuplicateLetters(l);
+            String expected = "LatenT, taLent, listen, SILENT";
+            String actualS = "";
+            actualL.ForEach(y => y.ForEach(x => actualS+=(x + ", ")));
+            actualS = actualS.Substring(0, actualS.Length - 2);
+            Assert.AreEqual(expected, actualS);
         }
     }
 }
-
